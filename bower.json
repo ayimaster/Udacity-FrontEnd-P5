@@ -1,0 +1,22 @@
+{
+  "name": "Neighborhood Map",
+  "homepage": "https://github.com/ayimaster/Udacity-FrontEnd-P5",
+  "authors": [
+    "Ayima Okeeva <ayima.okeeva@gmail.com>"
+  ],
+  "description": "Project Using APIs and MVC",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "knockout": "~3.4.0"
+  }
+}
