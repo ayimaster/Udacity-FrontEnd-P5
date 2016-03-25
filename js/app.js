@@ -87,13 +87,20 @@ var googleSuccess = function () {
     });
 
 
+    self.clickedMarker = function(marker) {
+      google.maps.event.trigger(this.marker, 'click');
+    };
+
     // Empty array to hold the list of places
     self.listOfAllPlaces = [];
     placesList.forEach(function (place) {
       self.listOfAllPlaces.push(new PlaceModel(place));
     });
 
-    
+      var clickedMarker = function(marker) {
+      console.log("clicked marker")
+       google.maps.event.trigger(self.markers, 'click');
+    };
 
 //     var PlaceModel = function () {
 //    var self = this;
@@ -117,17 +124,14 @@ var googleSuccess = function () {
     self.listOfAllPlaces.forEach(function(place){
       self.makeLocationsVisible.push(place);
     });
-    
-    self.resetCenter = function() {
-		self.map.panTo(self.center);
-	};
+
     
     // Looping through the list to place markers    
     $.each(placesList, function (key, data) {
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(data.location),
         map: self.init,
-        listVisible: ko.observable(true),
+//        listVisible: ko.observable(true),
         animation: google.maps.Animation.DROP,
         name: data.name,
         address: data.address,
@@ -151,22 +155,18 @@ var googleSuccess = function () {
     });
 
 
-    google.maps.event.addListener(self.infoWindow, 'closeclick', function () {
-      self.resetCenter();
-    });
+//    google.maps.event.addListener(self.infoWindow, 'closeclick', function () {
+//      self.resetCenter();
+//    });
 
 // Method to remove opened markers
-    var removeMarker = function (address) {
-      if (address != null) {
-        address.marker().setMap(null);
-      }
-    };
+//    var removeMarker = function (address) {
+//      if (address != null) {
+//        address.marker().setMap(null);
+//      }
+//    };
     
     
-    self.clickedMarker = function(marker) {
-      google.maps.event.trigger(self.marker, 'click');
-    };
-
     
 
   };
