@@ -13,7 +13,7 @@ var googleSuccess = function () {
   /*----------------- Model---------------*/
   var placesList = [
     {
-      name: 'Galata Kulesi',
+      name: 'Galata Kulesi - Galata Tower',
       address: 'Bereketzade Mh., Galata Kulesi, Beyoğlu/İstanbul, Turkey',
       info: "famous historic passage",
       streetView: "http://maps.googleapis.com/maps/api/streetview?size=400x400&location=41.025635,28.974169",
@@ -23,7 +23,7 @@ var googleSuccess = function () {
       }
       },
     {
-      name: 'Hagia Sofia',
+      name: 'Hagia Sofia - Basilica',
       address: 'Sultanahmet Mh., Ayasofya Meydanı, 34122 Fatih/İstanbul, Turkey ',
       info: "best fish sandwich",
       streetView: "http://maps.googleapis.com/maps/api/streetview?size=400x400&location=Hagia+Sophia&heading=150.78&pitch=-1.76",
@@ -33,7 +33,7 @@ var googleSuccess = function () {
       }
     },
     {
-      name: 'Sultanahmet Mosque',
+      name: 'Sultanahmet Mosque - Blue Mosque',
       address: 'Sultanahmet Mh., At Meydanı No:7, 34122 Fatih/İstanbul, Turkey',
       info: "New wet kebap and hamburgers",
       streetView: "http://maps.googleapis.com/maps/api/streetview?size=400x400&location=Sultanahmet+Square&heading=78&pitch=-1.76",
@@ -43,7 +43,7 @@ var googleSuccess = function () {
       }
     },
     {
-      name: 'Dolmabahçe Palace',
+      name: 'Dolmabahçe Palace - Glamourous Palace',
       address: 'Vişnezade Mh., Dolmabahçe Cd., 34357 Beşiktaş/İstanbul, Turkey',
       info: "Tea and coffee on the Bosphorus",
       streetView: "http://maps.googleapis.com/maps/api/streetview?size=400x400&location=41.03937,28.9983633&heading=150.78&pitch=-1.76",
@@ -53,7 +53,7 @@ var googleSuccess = function () {
       }
     },
     {
-      name: 'Kiz Kulesi',
+      name: 'Kiz Kulesi - Maiden Tower',
       address: 'Salacak, Üsküdar Salacak Mevkii, 34668 Üsküdar/İstanbul, Turkey',
       info: "Beautiful scenery and delicious desserts",
       streetView: "http://maps.googleapis.com/maps/api/streetview?size=400x400&location=41.020918,29.004056&heading=400.78&pitch=-1.76",

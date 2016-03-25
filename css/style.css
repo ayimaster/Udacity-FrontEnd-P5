@@ -10,37 +10,25 @@
      height: 100%;
      position: relative;
    }
-   /*#pac-input {*/
-   /*  position: absolute;*/
-   /*  top: 0px;*/
-   /*  left: 400px;*/
-   /*  width: 280px;*/
-   /*  padding: 0.9em;*/
-   /*  bottom: 0px;*/
-   /*}*/
    
-   div.listOfAllPlaces {
+   .listOfAllPlaces {
      background-color: #eee;
-     height: 20%;
      margin-left: 1em;
      width: 25%;
      top: 250px;
      position: absolute;
      color: #000;
-     font-size: 1.1em;     
+     font-size: 1.1em;
    }
    
-   .listPlaces {
-     
-     list-style: none;
-   }
-   
-   .list-item li {
+   .list-item {
      display: block;
      color: #000;
      text-decoration: none;
-     padding: 0.4em;
      border-bottom: 1px dotted #000;
-     margin-left: -10px;
+     margin-left: -30px;
+     margin-right: 10px;
      text-align: center;
+     line-height: 2.2em;
+     font-size: 1em;
    }
