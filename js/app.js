@@ -89,6 +89,7 @@ var googleSuccess = function () {
     // Initialize method to trigger event when clicking marker 
     // on the map
     self.clickedMarker = function (marker) {
+      console.log("clicked")
       google.maps.event.trigger(this.marker, 'click');
     };
 
@@ -99,7 +100,6 @@ var googleSuccess = function () {
     });
 
     self.infoWindow.addListener('closeclick', function () {
-
     });
 
     // Empty array to hold the list of places
@@ -123,7 +123,7 @@ var googleSuccess = function () {
         position: place.location,
         name: place.name,
         animation: google.maps.Animation.DROP,
-        //        content: contentString
+                content: contentString
       };
 
       //Create marker
@@ -131,7 +131,8 @@ var googleSuccess = function () {
 
       // Create event listener for every marker
       place.marker.addListener('click', function () {
-        var contentString = '<div><h1>' + place.name + '</h1><p>' + place.address + '</p>' + '<h5>' + place.info + '</h5>' + '<img class="img-responsive" src=" ' + place.streetView + '"> ' + '</div>';
+        contentString = '<div><h1>' + place.name + '</h1><p>' + place.address + '</p>' + '<h5>' + place.info + '</h5>' + '<img class="img-responsive" src=" ' + place.streetView + '"> ' + '</div>';
+        self.infoWindow.setContent(contentString);
         self.infoWindow.open(self.init, place.marker);
         place.marker.setAnimation(google.maps.Animation.BOUNCE);
         setTimeout(function () {
