@@ -23,51 +23,38 @@
             </button>
             <a class="navbar-brand" href="#">Neighborhood Map Project</a>
           </div>
-          <div class="form-group">
+          
+           
+           
+           <div class="form-group">
             <label for="addressAutoComplete"></label>
             <input type="text" id="addressAutoComplete" class="form-control" databind="addressAutoComplete: MapsApp.placeModel.address" placeholder="Please type in the address here">
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-12">
-
-<!--       Autocomplete method to be implemented-->
-        <!--
-
-        <div data-bind="addressAutoComplete: MapsApps.placeModel.address"></div>
--->
-
-      </div>
-      <!--first col-xs-12 col-md-12-->
-    </div>
-    <!--div row-->
-  </div>
-  <!--div container-->
 
   <div id="map-canvas"></div>
-  <div id='target'></div>
-
-
-  <div>
-    <ul class="placesList" data-bind="foreach: markers,  visible: toggleplacesListTest">
-      <li data-bind="visible: listVisible, click: infoWindow "><span data-bind="text: name"></span></li>
-    </ul>
+  
+  <div class="listOfAllPlaces">
+    <ul class="listPlaces" data-bind="foreach: makeLocationsVisible">
+    <li class="list-item" data-bind="text: name, click:$root.clickedMarker"><a href="#" ></a>      
+      </li>
+    </ul>          
   </div>
+
 
 
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src='bower_components/knockout/dist/knockout.js'></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places&amp;callback=googleSuccess" onerror="googleError"></script>
-<script src="js/app.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places&amp;callback=googleSuccess" onerror="googleError"></script>
+  <script src="js/app.js"></script>
   <!--  <script src="js/app_test.js"></script>-->
 
 </body>
+
 </html>

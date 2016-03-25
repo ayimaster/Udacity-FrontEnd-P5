@@ -1,4 +1,4 @@
-"use strict";
+//"use strict";
 
 var googleSuccess = function () {
 
@@ -64,25 +64,6 @@ var googleSuccess = function () {
     }
   ];
 
-  /*Place object holding addresses and places*/
-  var PlaceModel = function () {
-    var self = this;
-
-    self.name = ko.observable();
-    self.address = ko.observable();
-    self.info = ko.observable();
-    self.lat = ko.observable();
-    self.lng = ko.observable();
-    self.country = ko.observable();
-    self.marker = null;
-    self.openInfoWindow = function () {
-      self.marker.infoWindow.open(self.init, self.marker);
-    };
-    self.userInput = ko.observable();
-    self.center = new google.maps.LatLng(41.020918,
-      29.004056);
-  };
-
 
 
   /*--------------- ViewModel---------------*/
@@ -97,17 +78,57 @@ var googleSuccess = function () {
 
 
     // Empty array to hold the list of places
-    self.list = [];
+    self.listOfAllPlaces = [];
     placesList.forEach(function (place) {
-      self.list.push(new PlaceModel(place));
+      self.listOfAllPlaces.push(new PlaceModel(place));
     });
 
+    
+      /*Place object holding addresses and places*/
+  function  PlaceModel (data) {
+    this.name = data.name;
+    this.address = data.address;
+    this.info = data.info;
+    this.lat = data.lat;
+    this.lng = data.lng;
+    this.country = data.country;
+    this.marker = null;
+//    this.openInfoWindow = function () {
+//      this.marker.infoWindow.open(this.init, this.marker);
+//    };
+//    
+  };
+//     var PlaceModel = function () {
+//    var self = this;
+//
+//    self.name = ko.observable();
+//    self.address = ko.observable();
+//    self.info = ko.observable();
+//    self.lat = ko.observable();
+//    self.lng = ko.observable();
+//    self.country = ko.observable();
+//    self.marker = null;
+//    self.openInfoWindow = function () {
+//      self.marker.infoWindow.open(self.init, self.marker);
+//    };
+//    self.userInput = ko.observable();    
+//  };
+    
+    self.makeLocationsVisible = ko.observableArray([]);
     self.markers = ko.observableArray([]);
-
+    self.search = ko.observable();
+    self.listOfAllPlaces.forEach(function(place){
+      self.makeLocationsVisible.push(place);
+    });
+    
+    self.resetCenter = function() {
+		self.map.panTo(self.center);
+	};
+    
     // Looping through the list to place markers    
     $.each(placesList, function (key, data) {
       var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(data.location.lat, data.location.lng),
+        position: new google.maps.LatLng(data.location),
         map: self.init,
         listVisible: ko.observable(true),
         animation: google.maps.Animation.DROP,
@@ -143,23 +164,49 @@ var googleSuccess = function () {
         address.marker().setMap(null);
       }
     };
+    
+    
+    self.clickedMarker = function(marker) {
+      google.maps.event.trigger(self.marker, 'click');
+    };
 
 // Method to open the placesList 
-    self.placesListOpen = ko.observable(true);
-    self.toggleplacesList = function () {
-      self.placesListOpen(!self.placesListOpen());
-    };
+//    self.showlistOfAllPlaces.show = function() {
+//      console.log("the list is visible");
+//      self.placesList(true)
+//    };
+    
+//    self.hideListOfAllPlaces.hide = function() {
+//      console.log("the list is hidden");
+//      self.placesList(false)
+//    };
+    
+    
+// Filter the existing list of places
+    
+    
+//    self.markerMenuVisible = function(){
+//      var search = self.search().toLowerCase;
+//      
+//      self.placesList.forEach(function(pin){
+//        if(pin.name.toLowerCase().indexOf(search) !== -1) {
+//          self.markerMenuVisible.push(pin);
+//        }         
+//      });
+//    };
 
-    self.toggleplacesListTest = ko.computer(function () {
-      return self.placesListOpen() ? true : false;
-    });
-
-
-    var submit = function () {
-      console.log("clicked submit button");
-    };
-
-
+//self.filters = ko.observable();
+//
+//    self.markerFilter = ko.computed(function() {
+//      var search = self.query().toLowerCase();
+//      return ko.utils.arrayFilter(self.filters(), function(filter){
+//        var doesMatch = filter.name().toLowerCase().indexOf(search) >= 0;
+//        markers.markerMenuVisible(doesMatch);
+//        return doesMatch;
+//      });
+//    });
+      
+      
 
   };
   ko.applyBindings(new ViewModel());
