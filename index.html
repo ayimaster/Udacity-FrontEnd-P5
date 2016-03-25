@@ -23,27 +23,30 @@
             </button>
             <a class="navbar-brand" href="#">Neighborhood Map</a>
           </div>
-          
-           
-           
-           <div class="form-group">
+
+
+
+          <div class="form-group">
             <label for="addressAutoComplete"></label>
-            <input type="search-input" id="addressAutoComplete" class="form-control" data-bind="textInput: userInput, event:{keyup: filterMarker}" placeholder="Please type in the address here">
-            </div>
+            <input type="search-input" id="addressAutoComplete" class="form-control" data-bind="textInput: userInput, event:{keyup: filterMarker}" placeholder="Please type in the name of the sightseeing place">
           </div>
         </div>
       </div>
     </div>
+  </div>
 
 
   <div id="map-canvas"></div>
-  
-  <div class="listOfAllPlaces">
-    <ul class="listPlaces" data-bind="foreach: makeLocationsVisible">
-    <li class="list-item" data-bind="text: name, click:$root.clickedMarker"><a class="" href="#" ></a>      
-      </li>
-    </ul>          
-  </div>
+ 
+       
+        <form class="listOfAllPlaces">
+          <ul class="listPlaces" data-bind="foreach: makeLocationsVisible">
+            <li class="list-item" data-bind="text: name, click:$root.clickedMarker">
+              <a class="" href="#"></a>
+            </li>
+          </ul>
+        </form>
+     
 
 
 

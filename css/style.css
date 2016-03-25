@@ -32,3 +32,14 @@
      line-height: 2.2em;
      font-size: 1em;
    }
+.title-list {
+  font-size: 1.6em;
+  color: #000;
+  background-color: #eee;
+  position: absolute;
+  top: 160px;
+  left: 15px;
+  padding: .9em 1.3em .9em 1.4em;
+
+  
+}

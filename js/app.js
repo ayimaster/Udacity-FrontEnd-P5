@@ -15,7 +15,7 @@ var googleSuccess = function () {
     {
       name: 'Galata Kulesi - Galata Tower',
       address: 'Bereketzade Mh., Galata Kulesi, Beyoğlu/İstanbul, Turkey',
-      info: "famous historic passage",
+      info: "Called Christea Turris — is a medieval stone tower",
       streetView: "http://maps.googleapis.com/maps/api/streetview?size=200x200&location=41.025635,28.974169",
       location: {
         lat: 41.025634,
@@ -25,7 +25,7 @@ var googleSuccess = function () {
     {
       name: 'Hagia Sofia - Basilica',
       address: 'Sultanahmet Mh., Ayasofya Meydanı, 34122 Fatih/İstanbul, Turkey ',
-      info: "best fish sandwich",
+      info: "Former Christian patriarchal basilica",
       streetView: "http://maps.googleapis.com/maps/api/streetview?size=200x200&location=Hagia+Sophia&heading=150.78&pitch=-1.76",
       location: {
         lat: 41.008138,
@@ -35,7 +35,7 @@ var googleSuccess = function () {
     {
       name: 'Sultanahmet Mosque - Blue Mosque',
       address: 'Sultanahmet Mh., At Meydanı No:7, 34122 Fatih/İstanbul, Turkey',
-      info: "New wet kebap and hamburgers",
+      info: "Historic mosque in Istanbul",
       streetView: "http://maps.googleapis.com/maps/api/streetview?size=200x200&location=Sultanahmet+Square&heading=78&pitch=-1.76",
       location: {
         lat: 41.007273,
@@ -45,7 +45,7 @@ var googleSuccess = function () {
     {
       name: 'Dolmabahçe Palace - Glamourous Palace',
       address: 'Vişnezade Mh., Dolmabahçe Cd., 34357 Beşiktaş/İstanbul, Turkey',
-      info: "Tea and coffee on the Bosphorus",
+      info: "Served as main administrative center of the Ottoman Empire",
       streetView: "http://maps.googleapis.com/maps/api/streetview?size=200x200&location=41.03937,28.9983633&heading=150.78&pitch=-1.76",
       location: {
         lat: 41.03937,
@@ -55,7 +55,7 @@ var googleSuccess = function () {
     {
       name: 'Kiz Kulesi - Maiden Tower',
       address: 'Salacak, Üsküdar Salacak Mevkii, 34668 Üsküdar/İstanbul, Turkey',
-      info: "Beautiful scenery and delicious desserts",
+      info: "Tower lying on a small islet located at the southern entrance of the Bosphorus",
       streetView: "http://maps.googleapis.com/maps/api/streetview?size=200x200&location=41.020918,29.004056&heading=400.78&pitch=-1.76",
       location: {
         lat: 41.020918,
