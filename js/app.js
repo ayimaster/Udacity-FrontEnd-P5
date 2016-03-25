@@ -16,7 +16,7 @@ var googleSuccess = function () {
       name: 'Galata Kulesi - Galata Tower',
       address: 'Bereketzade Mh., Galata Kulesi, Beyoğlu/İstanbul, Turkey',
       info: "famous historic passage",
-      streetView: "http://maps.googleapis.com/maps/api/streetview?size=400x400&location=41.025635,28.974169",
+      streetView: "http://maps.googleapis.com/maps/api/streetview?size=200x200&location=41.025635,28.974169",
       location: {
         lat: 41.025634,
         lng: 28.974169
@@ -26,7 +26,7 @@ var googleSuccess = function () {
       name: 'Hagia Sofia - Basilica',
       address: 'Sultanahmet Mh., Ayasofya Meydanı, 34122 Fatih/İstanbul, Turkey ',
       info: "best fish sandwich",
-      streetView: "http://maps.googleapis.com/maps/api/streetview?size=400x400&location=Hagia+Sophia&heading=150.78&pitch=-1.76",
+      streetView: "http://maps.googleapis.com/maps/api/streetview?size=200x200&location=Hagia+Sophia&heading=150.78&pitch=-1.76",
       location: {
         lat: 41.008138,
         lng: 28.978401
@@ -36,7 +36,7 @@ var googleSuccess = function () {
       name: 'Sultanahmet Mosque - Blue Mosque',
       address: 'Sultanahmet Mh., At Meydanı No:7, 34122 Fatih/İstanbul, Turkey',
       info: "New wet kebap and hamburgers",
-      streetView: "http://maps.googleapis.com/maps/api/streetview?size=400x400&location=Sultanahmet+Square&heading=78&pitch=-1.76",
+      streetView: "http://maps.googleapis.com/maps/api/streetview?size=200x200&location=Sultanahmet+Square&heading=78&pitch=-1.76",
       location: {
         lat: 41.007273,
         lng: 28.973736
@@ -46,7 +46,7 @@ var googleSuccess = function () {
       name: 'Dolmabahçe Palace - Glamourous Palace',
       address: 'Vişnezade Mh., Dolmabahçe Cd., 34357 Beşiktaş/İstanbul, Turkey',
       info: "Tea and coffee on the Bosphorus",
-      streetView: "http://maps.googleapis.com/maps/api/streetview?size=400x400&location=41.03937,28.9983633&heading=150.78&pitch=-1.76",
+      streetView: "http://maps.googleapis.com/maps/api/streetview?size=200x200&location=41.03937,28.9983633&heading=150.78&pitch=-1.76",
       location: {
         lat: 41.03937,
         lng: 28.9983633
@@ -56,7 +56,7 @@ var googleSuccess = function () {
       name: 'Kiz Kulesi - Maiden Tower',
       address: 'Salacak, Üsküdar Salacak Mevkii, 34668 Üsküdar/İstanbul, Turkey',
       info: "Beautiful scenery and delicious desserts",
-      streetView: "http://maps.googleapis.com/maps/api/streetview?size=400x400&location=41.020918,29.004056&heading=400.78&pitch=-1.76",
+      streetView: "http://maps.googleapis.com/maps/api/streetview?size=200x200&location=41.020918,29.004056&heading=400.78&pitch=-1.76",
       location: {
         lat: 41.020918,
         lng: 29.004056
@@ -93,10 +93,7 @@ var googleSuccess = function () {
     this.lng = data.lng;
     this.country = data.country;
     this.marker = null;
-//    this.openInfoWindow = function () {
-//      this.marker.infoWindow.open(this.init, this.marker);
-//    };
-//    
+  
   };
 //     var PlaceModel = function () {
 //    var self = this;
@@ -170,43 +167,7 @@ var googleSuccess = function () {
       google.maps.event.trigger(self.marker, 'click');
     };
 
-// Method to open the placesList 
-//    self.showlistOfAllPlaces.show = function() {
-//      console.log("the list is visible");
-//      self.placesList(true)
-//    };
     
-//    self.hideListOfAllPlaces.hide = function() {
-//      console.log("the list is hidden");
-//      self.placesList(false)
-//    };
-    
-    
-// Filter the existing list of places
-    
-    
-//    self.markerMenuVisible = function(){
-//      var search = self.search().toLowerCase;
-//      
-//      self.placesList.forEach(function(pin){
-//        if(pin.name.toLowerCase().indexOf(search) !== -1) {
-//          self.markerMenuVisible.push(pin);
-//        }         
-//      });
-//    };
-
-//self.filters = ko.observable();
-//
-//    self.markerFilter = ko.computed(function() {
-//      var search = self.query().toLowerCase();
-//      return ko.utils.arrayFilter(self.filters(), function(filter){
-//        var doesMatch = filter.name().toLowerCase().indexOf(search) >= 0;
-//        markers.markerMenuVisible(doesMatch);
-//        return doesMatch;
-//      });
-//    });
-      
-      
 
   };
   ko.applyBindings(new ViewModel());
