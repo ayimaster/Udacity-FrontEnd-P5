@@ -63,7 +63,17 @@ var googleSuccess = function () {
       }
     }
   ];
-
+      /*Place object holding addresses and places*/
+  function  PlaceModel (data) {
+    this.name = data.name;
+    this.address = data.address;
+    this.info = data.info;
+    this.lat = data.lat;
+    this.lng = data.lng;
+    this.country = data.country;
+    this.marker = null;
+  
+  };
 
 
   /*--------------- ViewModel---------------*/
@@ -84,17 +94,7 @@ var googleSuccess = function () {
     });
 
     
-      /*Place object holding addresses and places*/
-  function  PlaceModel (data) {
-    this.name = data.name;
-    this.address = data.address;
-    this.info = data.info;
-    this.lat = data.lat;
-    this.lng = data.lng;
-    this.country = data.country;
-    this.marker = null;
-  
-  };
+
 //     var PlaceModel = function () {
 //    var self = this;
 //
