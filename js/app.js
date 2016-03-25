@@ -147,9 +147,28 @@ var googleSuccess = function () {
     });
 
 
-
+// This is an observable func that will hold user input
     self.userInput = ko.observable();
 
+// Create method to filter user input
+    self.filterMarker = function() {      
+      var watchUserInput = self.userInput().toLowerCase();
+      self.makeLocationsVisible.removeAll();
+      self.infoWindow.close();
+      self.listOfAllPlaces.forEach(function(place){
+        place.marker.setVisible(false);
+        if(place.name.toLowerCase().indexOf(watchUserInput) !== -1) {
+          self.makeLocationsVisible.push(place);
+        }
+      });
+      
+      self.makeLocationsVisible().forEach(function(place){
+        place.marker.setVisible(true);
+      });
+      console.log("Found place");
+    };
+    
+    
 
   };
   ko.applyBindings(new ViewModel());

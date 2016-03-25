@@ -28,7 +28,7 @@
            
            <div class="form-group">
             <label for="addressAutoComplete"></label>
-            <input type="text" id="addressAutoComplete" class="form-control" databind="addressAutoComplete: MapsApp.placeModel.address" placeholder="Please type in the address here">
+            <input type="search-input" id="addressAutoComplete" class="form-control" data-bind="textInput: userInput, event:{keyup: filterMarker}" placeholder="Please type in the address here">
             </div>
           </div>
         </div>
