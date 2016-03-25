@@ -3,7 +3,7 @@
 var googleSuccess = function () {
 
   //Global variables
-  var map, infoWindow, places;
+//  var map, infoWindow, places;
   var latlng = {
     lat: 41.03745,
     lng: 28.97761
@@ -68,10 +68,9 @@ var googleSuccess = function () {
     this.name = data.name;
     this.address = data.address;
     this.info = data.info;
-    this.lat = data.lat;
-    this.lng = data.lng;
-    this.country = data.country;
-    this.marker = null;
+    this.streetView = data.streetView;
+    this.location = data.location;
+    this.marker = ko.observable(data.marker);
   
   };
 
@@ -90,82 +89,67 @@ var googleSuccess = function () {
     self.clickedMarker = function(marker) {
       google.maps.event.trigger(this.marker, 'click');
     };
-
+//      var clickedMarker = function(marker) {
+//      console.log("clicked marker")
+//       google.maps.event.trigger(self.markers, 'click');
+//    };
+    
+    var contentString;
+    self.infoWindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+    
     // Empty array to hold the list of places
     self.listOfAllPlaces = [];
     placesList.forEach(function (place) {
       self.listOfAllPlaces.push(new PlaceModel(place));
     });
-
-      var clickedMarker = function(marker) {
-      console.log("clicked marker")
-       google.maps.event.trigger(self.markers, 'click');
-    };
-
-//     var PlaceModel = function () {
-//    var self = this;
-//
-//    self.name = ko.observable();
-//    self.address = ko.observable();
-//    self.info = ko.observable();
-//    self.lat = ko.observable();
-//    self.lng = ko.observable();
-//    self.country = ko.observable();
-//    self.marker = null;
-//    self.openInfoWindow = function () {
-//      self.marker.infoWindow.open(self.init, self.marker);
-//    };
-//    self.userInput = ko.observable();    
-//  };
+  
     
     self.makeLocationsVisible = ko.observableArray([]);
     self.markers = ko.observableArray([]);
     self.search = ko.observable();
-    self.listOfAllPlaces.forEach(function(place){
-      self.makeLocationsVisible.push(place);
-    });
-
     
-    // Looping through the list to place markers    
-    $.each(placesList, function (key, data) {
-      var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(data.location),
+    
+    //Iterate through the list of locations and 
+    //place markers on the map
+    
+    self.listOfAllPlaces.forEach(function(place){
+      var markerOptions = {
         map: self.init,
-//        listVisible: ko.observable(true),
-        animation: google.maps.Animation.DROP,
-        name: data.name,
-        address: data.address,
+        position: place.location,
         content: contentString
+      };
+      
+      place.marker = new google.maps.Marker(markerOptions);
+      
+      place.marker.addListener('click', function(){      place.marker.setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout(function(){
+          place.marker.setAnimation(null);
+        }, 800);       
       });
-
-      // Creating infoWindow and placing the content from the placeList array
-      var contentString = '<div><h1>' + data.name + '</h1><p>' + data.address + '</p>' + '<img class="img-responsive" src=" ' + data.streetView + '"> ' + "<div id='content'></div>" + '</div>';
-      self.infoWindow = new google.maps.InfoWindow();
-      google.maps.event.addListener(marker, 'click', function () {
-        self.init.panTo(marker.getPosition());
-        // Make marker icon bounce only once
-        marker.setAnimation(google.maps.Animation.BOUNCE);
-        setTimeout(function () {
-          marker.setAnimation(null);
-        }, 1000);
-        self.infoWindow.setContent(contentString);
-        self.infoWindow.open(self.init, this);
-      });
-      self.markers.push(marker);
+      
+      contentString = '<div><h1>' + place.name + '</h1><p>' + place.address + '</p>' + '<h5>' + place.info + '</h5>' + '<img class="img-responsive" src=" ' +place.streetView + '"> ' + '</div>';
+      self.infoWindow.setContent(contentString);
+      self.infoWindow.open(self.init, place.marker);
+      self.makeLocationsVisible.push(place);
+      self.markers.push(place);
     });
+    
 
-
-//    google.maps.event.addListener(self.infoWindow, 'closeclick', function () {
-//      self.resetCenter();
-//    });
+    self.resetCenter = function() {
+      self.init.panTo(self.center);
+    };
+    google.maps.event.addListener(self.infoWindow, 'closeclick', function () {
+      self.resetCenter();
+    });
 
 // Method to remove opened markers
-//    var removeMarker = function (address) {
-//      if (address != null) {
-//        address.marker().setMap(null);
-//      }
-//    };
-    
+    var removeMarker = function (address) {
+      if (address != null) {
+        address.marker().setMap(null);
+      }
+    };
     
     
 
