@@ -1,9 +1,9 @@
-//"use strict";
+"use strict";
 
 var googleSuccess = function () {
 
   //Global variables
-  //  var map, infoWindow, places;
+
   var latlng = {
     lat: 41.03745,
     lng: 28.97761
@@ -71,7 +71,6 @@ var googleSuccess = function () {
     this.streetView = data.streetView;
     this.location = data.location;
     this.marker = ko.observable(data.marker);
-
   };
 
 
@@ -99,8 +98,7 @@ var googleSuccess = function () {
       content: contentString
     });
 
-    self.infoWindow.addListener('closeclick', function () {
-    });
+    self.infoWindow.addListener('closeclick', function () {});
 
     // Empty array to hold the list of places
     self.listOfAllPlaces = [];
@@ -123,7 +121,7 @@ var googleSuccess = function () {
         position: place.location,
         name: place.name,
         animation: google.maps.Animation.DROP,
-                content: contentString
+        content: contentString
       };
 
       //Create marker
@@ -132,28 +130,25 @@ var googleSuccess = function () {
       // Create event listener for every marker
       place.marker.addListener('click', function () {
         contentString = '<div><h1>' + place.name + '</h1><p>' + place.address + '</p>' + '<h5>' + place.info + '</h5>' + '<img class="img-responsive" src=" ' + place.streetView + '"> ' + '</div>';
+
+        // Don't forget to set the content of the infoWindow
+        // to populate with the info from the array list
         self.infoWindow.setContent(contentString);
         self.infoWindow.open(self.init, place.marker);
         place.marker.setAnimation(google.maps.Animation.BOUNCE);
         setTimeout(function () {
           place.marker.setAnimation(null);
         }, 800);
-
       });
+      // Push the list to be visible in the View
       self.makeLocationsVisible.push(place);
+      // Push the markers to be visible
       self.markers.push(place);
     });
 
 
 
-
-
-
-
     self.userInput = ko.observable();
-
-
-
 
 
   };
