@@ -1,7 +1,6 @@
-"use strict";
-
 var googleSuccess = function () {
-
+"use strict";
+  
   //Global variables
 
   var latlng = {
@@ -167,9 +166,10 @@ var googleSuccess = function () {
       });
       console.log("Found place");
     };
-    
-    
-
   };
+  function googleError() {
+  alert("google API unavailable");
+}
+  
   ko.applyBindings(new ViewModel());
 };
