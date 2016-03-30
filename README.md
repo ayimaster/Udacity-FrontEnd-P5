@@ -21,3 +21,4 @@ The user can also choose the places from list and filter the locations in the se
 6. Udacity forum
 7. Stackoverflow
 
+![screen shot 2016-03-30 at 13 37 42](https://cloud.githubusercontent.com/assets/10465533/14141037/db3adbea-f67c-11e5-9aae-7f7e96bc0b2d.png)
