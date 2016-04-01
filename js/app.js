@@ -97,6 +97,7 @@ var googleSuccess = function () {
     var contentString;
     self.infoWindow = new google.maps.InfoWindow({
       content: contentString
+    
     });
 
     self.infoWindow.addListener('closeclick', function () {});
@@ -130,7 +131,7 @@ var googleSuccess = function () {
 
       // Create event listener for every marker
       place.marker.addListener('click', function () {
-        contentString = '<div><h1>' + place.name + '</h1><p>' + place.address + '</p>' + '<h5>' + place.info + '</h5>' + '<img class="img-responsive" src=" ' + place.streetView + '"> ' + '</div>';
+        contentString = '<div style="width:200px; height:200px"><h3>' + place.name + '</h3><p>' + place.address + '</p>' + '<h5>' + place.info + '</h5>' + '<img class="img-responsive" src=" ' + place.streetView + '"> ' + '</div>';
 
         // Don't forget to set the content of the infoWindow
         // to populate with the info from the array list
