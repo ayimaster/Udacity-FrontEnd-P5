@@ -70,7 +70,7 @@ var googleSuccess = function () {
     this.streetView = data.streetView;
     this.location = data.location;
     this.marker = ko.observable(data.marker);
-  };
+  }
 
 
   /*--------------- ViewModel---------------*/
@@ -87,10 +87,12 @@ var googleSuccess = function () {
     // Initialize method to trigger event when clicking marker 
     // on the map
     self.clickedMarker = function (marker) {
-      console.log("clicked")
       google.maps.event.trigger(this.marker, 'click');
+ 
     };
 
+  
+    
     // Creating google maps InfoWindow
     var contentString;
     self.infoWindow = new google.maps.InfoWindow({
@@ -164,12 +166,22 @@ var googleSuccess = function () {
       self.makeLocationsVisible().forEach(function(place){
         place.marker.setVisible(true);
       });
-      console.log("Found place");
     };
+
+    
+
+
+
+    
+    
+    
+ 
   };
-  function googleError() {
-  alert("google API unavailable");
-}
-  
+    
   ko.applyBindings(new ViewModel());
 };
+ 
+  function googleError() {
+  alert("google API unavailable");
+};
+  

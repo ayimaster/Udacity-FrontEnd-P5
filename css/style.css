@@ -1,44 +1,106 @@
-   html,
-   body {
-     margin: 0;
-     padding: 0;
-     height: 100%;
-     width: 100%;
+*,
+*:after,
+*:before: {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.map {
+  height: 100%;
+  position: relative;
+}
+ 
+.listOfAllPlaces {
+  list-style-type: none;
+}
+
+
+ @media only screen and (min-width: 801px){
+
+   .listOfAllPlaces {
+     position: absolute;
+     left: 0;
+     top: 200px;
    }
    
-   #map-canvas {
-     height: 100%;
-     position: relative;
+   .hide-lg{
+     display: none;
    }
+   
+   
+   /***
    
    .listOfAllPlaces {
-     background-color: #eee;
-     margin-left: 1em;
-     width: 25%;
-     top: 250px;
-     position: absolute;
-     color: #000;
-     font-size: 1.1em;
-   }
-   
-   .list-item {
-     display: block;
-     color: #000;
-     text-decoration: none;
-     border-bottom: 1px dotted #000;
-     margin-left: -30px;
-     margin-right: 10px;
-     text-align: center;
-     line-height: 2.2em;
-     font-size: 1em;
-   }
-   
-   .title-list {
-     font-size: 1.6em;
-     color: #000;
-     background-color: #eee;
-     position: absolute;
-     top: 160px;
-     left: 15px;
-     padding: .9em 1.3em .9em 1.4em;
-   }
+  background-color: #eee;
+  margin-left: 1em;
+  width: 25%;
+  top: 250px;
+  position: absolute;
+  color: #000;
+  font-size: 1.1em;
+}
+
+
+
+
+
+.title-list {
+  font-size: 1.6em;
+  color: #000;
+  background-color: #eee;
+  position: absolute;
+  top: 160px;
+  left: 15px;
+  padding: .9em 1.3em .9em 1.4em;
+}
+
+***/
+}
+
+@media only screen and (max-width: 800px){
+  .navbar-toggle {
+    float: left;
+    margin-left: 20px;
+    padding: 1.4em;
+  }
+  
+  .navbar-header{
+    float: right;
+    margin-top: 0.8em;
+  }
+  .form-group {
+    margin-top: 0px;
+  }
+  .list-item {
+  display: block;
+  color: #000;
+  border-bottom: 1px dotted #000;
+  margin-left: -30px;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 2.2em;
+  font-size: 1em;
+}
+  #canvas {
+    background-color: #f8f8f8;
+    width: 50%;
+    margin-top: 76px;
+}
+
+  .hide-lg{
+    height: 11%;
+    padding-bottom: 40px;
+  }
+
+
+    
+  }
+}
+
