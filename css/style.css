@@ -22,49 +22,54 @@ body {
 }
 
 
- @media only screen and (min-width: 801px){
+ @media only screen and (min-width: 673px){
 
    .listOfAllPlaces {
      position: absolute;
      left: 0;
-     top: 200px;
-   }
-   
-   .hide-lg{
-     display: none;
-   }
-   
-   
-   /***
-   
-   .listOfAllPlaces {
-  background-color: #eee;
+     background-color: #eee;
   margin-left: 1em;
   width: 25%;
-  top: 250px;
+  top: 120px;
   position: absolute;
   color: #000;
   font-size: 1.1em;
-}
+/*     text-align: center;*/
+     padding-right: 2em;
+             }
+   
+   .listPlaces {
+     list-style-type: none;
 
-
-
-
-
-.title-list {
-  font-size: 1.6em;
+   }
+   
+.list-item {
+  font-size: 1.2em;
   color: #000;
   background-color: #eee;
-  position: absolute;
-  top: 160px;
-  left: 15px;
-  padding: .9em 1.3em .9em 1.4em;
+/*  position: absolute;*/
+/*  top: 160px;*/
+/*  left: 15px;*/
+  padding: 0.4em;
+  border-bottom: 1px dotted #000; 
+}
+   
+   .form-control {
+     width: 40%;
+     margin: 1.5em 0 2em 1em;
+     float: left;
+     padding: 0.7em;
+     font-size: 1.1em;
+   }
+   
+   .navbar-header {
+     float: right;
+     margin: 1em 2em;
+        }
+
 }
 
-***/
-}
-
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 672px){
   .navbar-toggle {
     float: left;
     margin-left: 20px;
@@ -94,7 +99,7 @@ body {
     margin-top: 76px;
 }
 
-  .hide-lg{
+  .menu-sm{
     height: 11%;
     padding-bottom: 40px;
   }
