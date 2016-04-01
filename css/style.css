@@ -21,15 +21,18 @@ body {
   list-style-type: none;
 }
 
-@media only screen and (min-width: 700px) and (max-width: 771px) {
+/**@media only screen and (min-width: 700px) and (max-width: 771px) {
   .canvas-button {
     float: left;
     margin-left: 1em;
     padding: 1.4em;
   }
-}
 
-@media only screen and (min-width: 700px) {
+768-785
+}
+*/
+
+@media only screen and (min-width: 786px) {
   .listOfAllPlaces {
     position: absolute;
     left: 0;
@@ -69,7 +72,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 699px) {
+@media only screen and (max-width: 785px) {
   .navbar-toggle {
     float: left;
     margin-left: 20px;
