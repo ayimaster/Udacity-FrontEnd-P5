@@ -1,6 +1,6 @@
 var googleSuccess = function () {
-"use strict";
-  
+  "use strict";
+
   //Global variables
 
   var latlng = {
@@ -88,22 +88,20 @@ var googleSuccess = function () {
     // on the map
     self.clickedMarker = function (marker) {
       google.maps.event.trigger(this.marker, 'click');
- 
+
     };
 
-  
-    
     // Creating google maps InfoWindow
     var contentString;
     self.infoWindow = new google.maps.InfoWindow({
       content: contentString
-    
+
     });
 
     self.infoWindow.addListener('closeclick', function () {});
 
     // Empty array to hold the list of places
-    self.listOfAllPlaces = [];
+    self.listOfAllPlaces = ko.observableArray([]);
     placesList.forEach(function (place) {
       self.listOfAllPlaces.push(new PlaceModel(place));
     });
@@ -117,7 +115,7 @@ var googleSuccess = function () {
     //Iterate through the list of locations and 
     //place markers on the map
 
-    self.listOfAllPlaces.forEach(function (place) {
+    self.listOfAllPlaces().forEach(function (place) {
       var markerOptions = {
         map: self.init,
         position: place.location,
@@ -149,40 +147,60 @@ var googleSuccess = function () {
     });
 
 
-// This is an observable func that will hold user input
+    // This is an observable func that will hold user input
     self.userInput = ko.observable();
 
-// Create method to filter user input
-    self.filterMarker = function() {      
+    // Create method to filter user input
+    self.filterMarker = function () {
       var watchUserInput = self.userInput().toLowerCase();
       self.makeLocationsVisible.removeAll();
       self.infoWindow.close();
-      self.listOfAllPlaces.forEach(function(place){
+      self.listOfAllPlaces().forEach(function (place) {
         place.marker.setVisible(false);
-        if(place.name.toLowerCase().indexOf(watchUserInput) !== -1) {
+        if (place.name.toLowerCase().indexOf(watchUserInput) !== -1) {
           self.makeLocationsVisible.push(place);
         }
       });
-      
-      self.makeLocationsVisible().forEach(function(place){
+
+      self.makeLocationsVisible().forEach(function (place) {
         place.marker.setVisible(true);
       });
     };
 
-    
+
+    // Foursquare API USAGE
+    var results, name, url, location, error;
 
 
+    self.listOfAllPlaces().forEach(function (place) {
+        console.log(self.listOfAllPlaces());
+        var sqlimit = 10;
+        var client_id = '513QSIVTKBBQPSZ1BKL4XSRRK3AYINYHRTR0RP3ESOXVPZWU';
+        var cl_srt = 'NJL5C1FIV153XZYAOFAHVJX3ODAF3QGNYJBEONSWIJE0UOWW';
+        var fourSquareURL =
+          'https://api.foursquare.com/v2/venues/search?client_id=' +
+          client_id + '&client_secret=' + cl_srt + '&v=20131016&11' + place.location.lat + ',' + place.location.lng + '&query=' + sqlimit + '&limit';
 
-    
-    
-    
- 
-  };
-    
+        $.getJSON(fourSquareURL).done(function (data) {
+          console.log(data.response.venue);
+          results = data.response.venues[0];
+          place.name = results.name;
+          place.url = results.hasOwnProperty('url') ? results.url : '';
+          place.location = results.locationformattedAddress[0];
+
+        }).error(function () {
+          console.log("API could not be loaded");
+          place.error = "the foursquare API could not be loaded"
+        })
+      }) //end forEach listofallplaces
+
+  }; //end ViewModel
+
+
   ko.applyBindings(new ViewModel());
-};
- 
-  function googleError() {
+
+}; // end googleSuccess function
+
+function googleError() {
   alert("google API unavailable");
-};
-  
+}; // end googleError function
