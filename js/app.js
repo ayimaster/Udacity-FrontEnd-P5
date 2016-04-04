@@ -173,7 +173,6 @@ var googleSuccess = function () {
 
 
     self.listOfAllPlaces().forEach(function (place) {
-        console.log(place);
         var sqlimit = 1;
         var client_id = '513QSIVTKBBQPSZ1BKL4XSRRK3AYINYHRTR0RP3ESOXVPZWU';
         var cl_srt = 'NJL5C1FIV153XZYAOFAHVJX3ODAF3QGNYJBEONSWIJE0UOWW';
@@ -182,7 +181,6 @@ var googleSuccess = function () {
           client_id + '&client_secret=' + cl_srt + '&v=20131016' + '&ll=' + place.location.lat + ',' + place.location.lng + '&query=' + '&limit=' + sqlimit;
 
         $.getJSON(fourSquareURL).done(function (data) {
-          console.log(place);
           results = data.response.venues[0];
           place.name = results.name;
           place.url = results.hasOwnProperty('url') ? results.url : '';
