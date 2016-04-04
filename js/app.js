@@ -25,30 +25,30 @@ var googleSuccess = function () {
       name: 'Hagia Sofia - Basilica',
       address: 'Sultanahmet Mh., Ayasofya Meydanı, 34122 Fatih/İstanbul, Turkey ',
       info: "Former Christian patriarchal basilica",
-      streetView: "http://maps.googleapis.com/maps/api/streetview?size=200x200&location=Hagia+Sophia&heading=150.78&pitch=-1.76",
+      streetView: "http://maps.googleapis.com/maps/api/streetview?size=200x200&location=41.008583,28.980175",
       location: {
-        lat: 41.008138,
-        lng: 28.978401
+        lat: 41.008583,
+        lng: 28.980175
       }
     },
     {
       name: 'Sultanahmet Mosque - Blue Mosque',
       address: 'Sultanahmet Mh., At Meydanı No:7, 34122 Fatih/İstanbul, Turkey',
       info: "Historic mosque in Istanbul",
-      streetView: "http://maps.googleapis.com/maps/api/streetview?size=200x200&location=Sultanahmet+Square&heading=78&pitch=-1.76",
+      streetView: "http://maps.googleapis.com/maps/api/streetview?size=200x200&location=41.005568,28.976546",
       location: {
-        lat: 41.007273,
-        lng: 28.973736
+        lat: 41.005568,
+        lng: 28.976546
       }
     },
     {
-      name: 'Dolmabahçe Palace - Glamourous Palace',
-      address: 'Vişnezade Mh., Dolmabahçe Cd., 34357 Beşiktaş/İstanbul, Turkey',
+      name: 'Dolmabahçe Palace',
+      address: 'Dolmabahçe Cd., 34357 Beşiktaş/İstanbul, Turkey',
       info: "Served as main administrative center of the Ottoman Empire",
-      streetView: "http://maps.googleapis.com/maps/api/streetview?size=200x200&location=41.03937,28.9983633&heading=150.78&pitch=-1.76",
+      streetView: "http://maps.googleapis.com/maps/api/streetview?size=200x200&location=41.038574,28.998763",
       location: {
-        lat: 41.03937,
-        lng: 28.9983633
+        lat: 41.038574,
+        lng: 28.998763
       }
     },
     {
@@ -169,28 +169,29 @@ var googleSuccess = function () {
 
 
     // Foursquare API USAGE
-    var results, name, url, location, error, street ;
+    var results, name, url, location, error, street;
 
 
     self.listOfAllPlaces().forEach(function (place) {
         console.log(place);
-        var sqlimit = 10;
+        var sqlimit = 1;
         var client_id = '513QSIVTKBBQPSZ1BKL4XSRRK3AYINYHRTR0RP3ESOXVPZWU';
         var cl_srt = 'NJL5C1FIV153XZYAOFAHVJX3ODAF3QGNYJBEONSWIJE0UOWW';
         var fourSquareURL =
           'https://api.foursquare.com/v2/venues/search?client_id=' +
-          client_id + '&client_secret=' + cl_srt + '&v=20131016&11' + '&ll=' + place.location.lat + ',' + place.location.lng + '&query=tips' + '&limit' + sqlimit;
+          client_id + '&client_secret=' + cl_srt + '&v=20131016' + '&ll=' + place.location.lat + ',' + place.location.lng + '&query=' + '&limit=' + sqlimit;
 
         $.getJSON(fourSquareURL).done(function (data) {
+          console.log(place);
           results = data.response.venues[0];
           place.name = results.name;
           place.url = results.hasOwnProperty('url') ? results.url : '';
-          place.location = results.location.formattedAddress[0];
 
-
+          place.street = results.location.formattedAddress[0];
+          place.location = results.location.formattedAddress[1]
         }).error(function () {
           console.log("API could not be loaded");
-          place.error = "the foursquare API could not be loaded";
+          place.error = "The foursquare API could not be loaded, please try again later";
         })
       }) //end forEach listofallplaces
 
