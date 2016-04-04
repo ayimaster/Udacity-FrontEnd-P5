@@ -190,7 +190,7 @@ var googleSuccess = function () {
 
         }).error(function () {
           console.log("API could not be loaded");
-          place.error = "the foursquare API could not be loaded"
+          place.error = "the foursquare API could not be loaded";
         })
       }) //end forEach listofallplaces
 

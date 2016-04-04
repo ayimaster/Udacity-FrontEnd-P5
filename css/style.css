@@ -21,16 +21,6 @@ body {
   list-style-type: none;
 }
 
-/**@media only screen and (min-width: 700px) and (max-width: 771px) {
-  .canvas-button {
-    float: left;
-    margin-left: 1em;
-    padding: 1.4em;
-  }
-
-768-785
-}
-*/
 
 @media only screen and (min-width: 786px) {
   .listOfAllPlaces {
@@ -43,7 +33,6 @@ body {
     position: absolute;
     color: #000;
     font-size: 1.1em;
-    /*     text-align: center;*/
     padding-right: 2em;
   }
   .listPlaces {
@@ -53,9 +42,6 @@ body {
     font-size: 1.2em;
     color: #000;
     background-color: #eee;
-    /*  position: absolute;*/
-    /*  top: 160px;*/
-    /*  left: 15px;*/
     padding: 0.4em;
     border-bottom: 1px dotted #000;
   }
