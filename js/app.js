@@ -63,7 +63,7 @@ var googleSuccess = function () {
     }
   ];
   /*Place object holding addresses and places*/
-  function PlaceModel(data) {
+  function Place(data) {
     this.name = data.name;
     this.address = data.address;
     this.info = data.info;
@@ -103,7 +103,7 @@ var googleSuccess = function () {
     // Empty array to hold the list of places
     self.listOfAllPlaces = ko.observableArray([]);
     placesList.forEach(function (place) {
-      self.listOfAllPlaces.push(new PlaceModel(place));
+      self.listOfAllPlaces.push(new Place(place));
     });
 
 
@@ -169,24 +169,24 @@ var googleSuccess = function () {
 
 
     // Foursquare API USAGE
-    var results, name, url, location, error;
+    var results, name, url, location, error, street ;
 
 
     self.listOfAllPlaces().forEach(function (place) {
-        console.log(self.listOfAllPlaces());
+        console.log(place);
         var sqlimit = 10;
         var client_id = '513QSIVTKBBQPSZ1BKL4XSRRK3AYINYHRTR0RP3ESOXVPZWU';
         var cl_srt = 'NJL5C1FIV153XZYAOFAHVJX3ODAF3QGNYJBEONSWIJE0UOWW';
         var fourSquareURL =
           'https://api.foursquare.com/v2/venues/search?client_id=' +
-          client_id + '&client_secret=' + cl_srt + '&v=20131016&11' + place.location.lat + ',' + place.location.lng + '&query=' + sqlimit + '&limit';
+          client_id + '&client_secret=' + cl_srt + '&v=20131016&11' + '&ll=' + place.location.lat + ',' + place.location.lng + '&query=tips' + '&limit' + sqlimit;
 
         $.getJSON(fourSquareURL).done(function (data) {
-          console.log(data.response.venue);
           results = data.response.venues[0];
           place.name = results.name;
           place.url = results.hasOwnProperty('url') ? results.url : '';
-          place.location = results.locationformattedAddress[0];
+          place.location = results.location.formattedAddress[0];
+
 
         }).error(function () {
           console.log("API could not be loaded");
