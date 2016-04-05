@@ -29,4 +29,5 @@ The above command should install jquery, knockout.js and bootstrap. If you do no
 7. Udacity forym mentors (specifically Karol David)
 8. Stackoverflow
 
-![screen shot 2016-03-30 at 13 37 42](https://cloud.githubusercontent.com/assets/10465533/14141037/db3adbea-f67c-11e5-9aae-7f7e96bc0b2d.png)
+![screen shot 2016-04-05 at 10 23 08](https://cloud.githubusercontent.com/assets/10465533/14285573/5c3fd92e-fb4c-11e5-805a-ae5a803bee74.png)
+![screen shot 2016-04-05 at 10 26 46](https://cloud.githubusercontent.com/assets/10465533/14285574/5dd5a156-fb4c-11e5-8743-9e167b56b860.png)
