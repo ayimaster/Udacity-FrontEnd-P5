@@ -88,7 +88,9 @@ var googleSuccess = function () {
     // on the map
     self.clickedMarker = function (marker) {
       google.maps.event.trigger(this.marker, 'click');
-
+        if(place.error) {
+          contentString = place.error;
+        }
     };
 
     // Creating google maps InfoWindow
@@ -129,7 +131,13 @@ var googleSuccess = function () {
 
       // Create event listener for every marker
       place.marker.addListener('click', function () {
-        contentString = '<div style="width:200px; height:200px"><h3>' + place.name + '</h3><p>' + place.address + '</p>' + '<h5>' + place.info + '</h5>' + '<img class="img-responsive" src=" ' + place.streetView + '"> ' + '</div>';
+        contentString = '<div style="width:200px; height:200px"><h3>' +
+          place.name + '</h3>' +
+          '<h5>' + place.info + '</h5>'+
+          '<p>' +  place.address + '</p>'  + 
+          '<img class="img-responsive" src=" ' +
+          place.streetView + '"> ' + '<p>'+
+          place.url + '</p>'+ '</div>';
 
         // Don't forget to set the content of the infoWindow
         // to populate with the info from the array list
@@ -178,7 +186,11 @@ var googleSuccess = function () {
         var cl_srt = 'NJL5C1FIV153XZYAOFAHVJX3ODAF3QGNYJBEONSWIJE0UOWW';
         var fourSquareURL =
           'https://api.foursquare.com/v2/venues/search?client_id=' +
-          client_id + '&client_secret=' + cl_srt + '&v=20131016' + '&ll=' + place.location.lat + ',' + place.location.lng + '&query=' + '&limit=' + sqlimit;
+          client_id +
+            '&client_secret=' + 
+            cl_srt + '&v=20131016' + '&ll=' +
+            place.location.lat + ',' + place.location.lng +
+            '&query=' + '&limit=' + sqlimit;
 
         $.getJSON(fourSquareURL).done(function (data) {
           results = data.response.venues[0];
@@ -186,12 +198,11 @@ var googleSuccess = function () {
           place.url = results.hasOwnProperty('url') ? results.url : '';
 
           place.street = results.location.formattedAddress[0];
-          place.location = results.location.formattedAddress[1]
+          place.location = results.location.formattedAddress[1];
         }).error(function () {
-          console.log("API could not be loaded");
-          place.error = "The foursquare API could not be loaded, please try again later";
-        })
-      }) //end forEach listofallplaces
+                    place.error = alert( "The foursquare API could not be loaded, please try again later");
+        });
+      }); //end forEach listofallplaces
 
   }; //end ViewModel
 
@@ -201,5 +212,5 @@ var googleSuccess = function () {
 }; // end googleSuccess function
 
 function googleError() {
-  alert("google API unavailable");
+  alert("google API is unavailable at the moment");
 }; // end googleError function
